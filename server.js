@@ -1,6 +1,10 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(3000, '192.168.33.10');
-console.log('Server running at http://192.168.33.10:3000');
+var express = require('express'),
+    teams = require('./routes/teams');
+
+var app = express();
+
+app.get('/teams', teams.findAll);
+app.get('/teams/:id', teams.findById);
+
+app.listen(3000);
+console.log('Listening on port 3000...');
