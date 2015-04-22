@@ -3,7 +3,9 @@
     "description": "A CRUD API to manage tournament brackets.",
     "version": "0.0.1",
     "private": true,
+    "author": "Michael Diviesti <mediviesti@gmail.com>",
     "dependencies": {
-        "express": "3.x"
+        "express": "3.x",
+        "mongodb": "2.0.*"
     }
 }
