@@ -1,7 +1,6 @@
 var express = require('express'),
     teams = require('./routes/teams'),
     players = require('./routes/players');
-
 var app = express();
 
 app.configure(function () {
