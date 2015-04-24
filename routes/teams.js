@@ -19,7 +19,7 @@ db.open(function(err, db) {
     }
 });
 
-exports.findById = function(req, res) {
+module.exports.findById = function(req, res) {
     var id = req.params.id;
     db.collection(collectionName, function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
@@ -28,7 +28,7 @@ exports.findById = function(req, res) {
     });
 };
 
-exports.findAll = function(req, res) {
+module.exports.findAll = function(req, res) {
     db.collection(collectionName, function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
@@ -36,7 +36,7 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.addTeam = function(req, res) {
+module.exports.addTeam = function(req, res) {
     var team = req.body;
     db.collection(collectionName, function(err, collection) {
         collection.insert(team, {safe:true}, function(err, result) {
@@ -49,7 +49,7 @@ exports.addTeam = function(req, res) {
     });
 }
 
-exports.updateTeam = function(req, res) {
+module.exports.updateTeam = function(req, res) {
     var id = req.params.id;
     var team = req.body;
     db.collection(collectionName, function(err, collection) {
@@ -63,7 +63,7 @@ exports.updateTeam = function(req, res) {
     });
 }
 
-exports.deleteTeam = function(req, res) {
+module.exports.deleteTeam = function(req, res) {
     var id = req.params.id;
     db.collection(collectionName, function (err, collection) {
         collection.remove({'_id': new BSON.ObjectID(id)}, {safe: true}, function (err, result) {
