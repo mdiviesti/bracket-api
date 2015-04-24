@@ -13,7 +13,7 @@ db.open(function(err, db) {
     if(!err) {
         db.collection(collectionName, {strict:true}, function(err, collection) {
             if (err) {
-
+                console.log('in the database connection');
             }
         });
     }
@@ -23,7 +23,11 @@ module.exports.findById = function(req, res) {
     var id = req.params.id;
     db.collection(collectionName, function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send(item);
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                res.send(item);
+            }
         });
     });
 };
