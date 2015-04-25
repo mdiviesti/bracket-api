@@ -1,3 +1,4 @@
+
 exports.findAll = function(req, res) {
     res.send([{name:'John Smith'}, {name:'Joe Smith'}, {name:'Jesse Smith'}]);
 };

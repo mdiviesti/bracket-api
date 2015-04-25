@@ -1,13 +1,7 @@
-var mongo = require('mongodb');
-
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure,
-    dbName = 'teamsdb',
-    collectionName = 'teams';
-
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db(dbName, server);
+var d = require('../includes/database');
+var db = d.db;
+var BSON = d.BSON;
+collectionName = 'teams';
 
 db.open(function(err, db) {
     if(!err) {
